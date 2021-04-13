@@ -6,16 +6,25 @@ public class User {
     private int age;
 
     // constructori
-    public User(int userId, String name, int age) {
-        this.userId = userId;
+    public User(String name, int age, String location) {
+        this.CurrId = userId++;
         this.name = name;
         this.age = age;
+        this.location = location;
+        this.addUser();
     }
 
+    public void addUser() {
+        lstSrv.addUser(this);
+    }
 
     // getteri
-    public int getUserId() {
+    public static int getUserId() {
         return userId;
+    }
+
+    public int getCurrId() {
+        return CurrId;
     }
 
     public String getName() {
@@ -26,9 +35,14 @@ public class User {
         return age;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+
     // setteri
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public static void setUserId(int userId) {
+        User.userId = userId;
     }
 
     public void setName(String name) {
@@ -37,5 +51,21 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+
+    // override
+    @Override
+    public String toString() {
+        return "User{" +
+                "CurrId=" + CurrId +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", location='" + location + '\'' +
+                '}';
     }
 }

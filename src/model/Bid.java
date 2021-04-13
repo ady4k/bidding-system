@@ -1,43 +1,47 @@
 package model;
 
-public class Bid extends User{
-    private int bidId;
-    private int currentPrice;
-    private int timeRemaining;
+import org.jetbrains.annotations.NotNull;
 
+public class Bid {
+    private static int bidId = 0;
+    private final int currId;
+    private double startingPrice;
+    private int totalTime;
 
     // constructori
-
-    public Bid(int userId, String name, int age, int bidId, int currentPrice, int timeRemaining) {
-        super(userId, name, age);
-        this.bidId = bidId;
-        this.currentPrice = currentPrice;
-        this.timeRemaining = timeRemaining;
+    public Bid( double startingPrice, int totalTime) {
+        this.currId = bidId++;
+        this.startingPrice = startingPrice;
+        this.totalTime = totalTime;
     }
 
     // getteri
-    public int getBidId() {
+    public static int getBidId() {
         return bidId;
     }
 
-    public int getCurrentPrice() {
-        return currentPrice;
+    public int getCurrId() {
+        return currId;
     }
 
-    public int getTimeRemaining() {
-        return timeRemaining;
+    public double getCurrentPrice() {
+        return startingPrice;
+    }
+
+    public int getTotalTime() {
+        return totalTime;
     }
 
     // setteri
-    public void setBidId(int bidId) {
-        this.bidId = bidId;
+    public static void setBidId(int bidId) {
+        Bid.bidId = bidId;
     }
 
-    public void setCurrentPrice(int currentPrice) {
-        this.currentPrice = currentPrice;
+    public void setCurrentPrice(double currentPrice) {
+        this.startingPrice = currentPrice;
     }
 
-    public void setTimeRemaining(int timeRemaining) {
-        this.timeRemaining = timeRemaining;
+    public void setTotalTime(int totalTime) {
+        this.totalTime = totalTime;
     }
 }
