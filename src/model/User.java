@@ -1,9 +1,16 @@
 package model;
 
+import collections.service.ListService;
+
 public class User {
-    private int userId;
+    //private static List<User> lista = new ArrayList<>();
+    private static int userId = 0;
+    private final int CurrId;
+
     private String name;
     private int age;
+    private String location;
+    private static final ListService lstSrv = new ListService();
 
     // constructori
     public User(String name, int age, String location) {
