@@ -32,7 +32,7 @@ public abstract class Product {
         return category;
     }
 
-    public double getStartingPrice() {
+    public double getBuyoutPrice() {
         return buyoutPrice;
     }
 
@@ -49,10 +49,16 @@ public abstract class Product {
         this.category = category;
     }
 
-    public void setStartingPrice(double startingPrice) {
+    public void setBuyoutPrice(double startingPrice) {
         this.buyoutPrice = startingPrice;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "currId=" + currId +
+                ", productName='" + productName + '\'' +
+                ", category='" + category + '\'' +
+                ", buyoutPrice=" + buyoutPrice;
+    }
 }
-
-
-

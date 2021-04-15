@@ -1,5 +1,7 @@
 package model;
 
+import collections.service.ListService;
+
 import java.util.List;
 
 public class Vehicle extends Location{
@@ -8,6 +10,8 @@ public class Vehicle extends Location{
     private double engineCapacity;
     private boolean hasForcedInduction;
 
+    private static final ListService lstSrv = new ListService();
+
     // constructori
     public Vehicle(String productName, String category, double startingPrice, String location, List<String> deliveryLocations, int kW, int maxSpeed, double engineCapacity, boolean hasForcedInduction) {
         super(productName, category, startingPrice, location, deliveryLocations);
@@ -15,6 +19,7 @@ public class Vehicle extends Location{
         this.maxSpeed = maxSpeed;
         this.engineCapacity = engineCapacity;
         this.hasForcedInduction = hasForcedInduction;
+        lstSrv.addProduct(this);
     }
     //daca citesti asta adi visla e gay
     // getteri
@@ -49,5 +54,16 @@ public class Vehicle extends Location{
 
     public void setForceInducted(boolean forceInducted) {
         hasForcedInduction = forceInducted;
+    }
+
+    // override
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", kW=" + kW +
+                ", maxSpeed=" + maxSpeed +
+                ", engineCapacity=" + engineCapacity +
+                ", hasForcedInduction=" + hasForcedInduction +
+                '}';
     }
 }

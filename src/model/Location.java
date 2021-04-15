@@ -1,12 +1,10 @@
 package model;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.ArrayList;
 
 public abstract class Location extends Product{
     private String location;
-    private List<String> deliveryLocations = new ArrayList<>();
+    private List<String> deliveryLocations;
     // locatia de unde se vinde produsul
     // adresa specifica sau in mare tara, etc.
     // fiecare obiect are o lista de tari unde poate fi trimis / vandut
@@ -34,5 +32,12 @@ public abstract class Location extends Product{
 
     public void setDeliveryLocations(List<String> deliveryLocations) {
         this.deliveryLocations = deliveryLocations;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", location='" + location + '\'' +
+                ", deliveryLocations=" + deliveryLocations;
     }
 }

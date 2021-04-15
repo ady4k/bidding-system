@@ -1,6 +1,6 @@
 package service;
 
-import collections.service.ListService;
+import collections.service.*;
 import model.*;
 
 import java.util.ArrayList;
@@ -11,6 +11,8 @@ public class MainService  {
     private final Scanner a = new Scanner (System.in);
 
     private static final ListService lstSrv = new ListService();
+    private static final MapService mapSrv = new MapService();
+    private static final BidService bidSrv = new BidService();
 
     public int choice() {
         System.out.println("""
@@ -42,7 +44,7 @@ public class MainService  {
         int age = a.nextInt();
 
         System.out.print("Tara: ");
-        String location = a.nextLine();
+        String location = a.next();
 
         System.out.print("Alege nivelul de admin:\n1 - utilizator normal\n2 - permisiuni licitatii\n3 - permisiuni licitatii / produse\n4 - permisiuni totale");
         int adminLevel = a.nextInt();
@@ -120,6 +122,20 @@ public class MainService  {
         int totalTime = a.nextInt();
 
         Bid bid = new Bid(startingPrice, totalTime);
+
+        bidSrv.addBid(bid);
+    }
+
+    public void showObject(int val) {
+        if (val == 1) {
+            showUsers();
+        } else if (val == 2) {
+            showProducts();
+        } else if (val == 3) {
+            showBids();
+        } else {
+            System.out.println("Valoare invalida!");
+        }
     }
 
     public void showUsers() {
@@ -127,12 +143,121 @@ public class MainService  {
     }
 
     public void showProducts() {
-
+        lstSrv.getProducts();
     }
 
     public void showBids() {
-
+        mapSrv.getBids();
     }
-}
 
+    public void modifyObject(int val) {
+        if (val == 1) {
+            System.out.println("Alegeti un utilizator:");
+            showUsers();
+            int index = a.nextInt();
+            modifyUser(index);
+        } else if (val == 2) {
+            System.out.println("Alegeti un produs: ");
+            showProducts();
+            int index = a.nextInt();
+            modifyProduct(index);
+        } else if (val == 3) {
+            System.out.println("Alegeti o licitatie: ");
+            showBids();
+            int index = a.nextInt();
+            modifyBid(index);
+        } else {
+            System.out.println("Valoare invalida!");
+        }
+    }
+
+    public void modifyUser(int index) {
+        System.out.println("""
+                    1) Nume
+                    2) Varsta
+                    3) Tara
+                    """);
+        int choice = a.nextInt();
+        lstSrv.modifyUser(index, choice - 1);
+    }
+    //daca citesti asta adi visla e gay
+    public void modifyProduct(int index) {
+        System.out.println("""
+                1) Numele produsului
+                2) Categoria
+                3) Pretul de inceput
+                4) Locatia
+                5) Tarile de vanzare
+                """);
+        if (lstSrv.getProduct(index) instanceof Vehicle) {
+            System.out.println("""
+                    6) Putere (kW)
+                    7) Viteza maxima
+                    8) Capacitatea motorului
+                    9) Daca are inductie fortata
+                    """);
+        } else if (lstSrv.getProduct(index) instanceof Other) {
+            System.out.println("""
+                    6) Cantitate
+                    7) Greutate
+                    8) Tipul de impachetare
+                    """);
+        }
+        int choice = a.nextInt();
+        lstSrv.modifyProduct(index, choice - 1);
+    }
+
+    public void modifyBid(int index) {
+        System.out.println("""
+                1) Pretul de inceput
+                2) Timpul total ramas
+                3) Obiectul licitat
+                """);
+        int choice = a.nextInt();
+        mapSrv.modifyBid(index, choice);
+    }
+
+    public void deleteObject(int val) {
+        if (val == 1) {
+            System.out.println("Alegeti un utilizator:");
+            showUsers();
+            int index = a.nextInt();
+            deleteUser(index);
+        } else if (val == 2) {
+            System.out.println("Alegeti un produs: ");
+            showProducts();
+            int index = a.nextInt();
+            deleteProduct(index);
+        } else if (val == 3) {
+            System.out.println("Alegeti o licitatie: ");
+            showBids();
+            int index = a.nextInt();
+            deleteBid(index);
+        } else {
+            System.out.println("Valoare invalida!");
+        }
+    }
+
+    public void deleteUser(int index) {
+        lstSrv.removeUser(index);
+        System.out.println("Utilizatorul a fost sters cu succes!");
+    }
+
+    public void deleteProduct(int index) {
+        lstSrv.removeProduct(index);
+        System.out.println("Produsul a fost sters cu succes!");
+    }
+
+    public void deleteBid(int index) {
+        bidSrv.removeBid(index);
+        System.out.println("Licitatia a fost stearsa cu succes!");
+    }
+
+    public void bid() {
+        System.out.println("Alegeti o licitatie: ");
+        showBids();
+        int index = a.nextInt();
+        bidSrv.bid(index);
+    }
+ }
 

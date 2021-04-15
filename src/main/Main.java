@@ -32,45 +32,29 @@ public class Main {
             }
             case 2 -> {
                 select = srv.choice();
-                //srv.showObject(select);
+                srv.showObject(select);
             }
             case 3 -> {
                 select = srv.choice();
-                //srv.modifyObject();
-
+                srv.modifyObject(select);
             }
             case 4 -> {
                 select = srv.choice();
-                //srv.deleteObject();
-
+                srv.deleteObject(select);
             }
             case 5 -> {
-
+                srv.bid();
             }
             case 6 -> {
 
             }
             case 7 -> {
-
+                System.out.println("Ati iesit din program.");
             }
-            default -> System.out.println("Command does not exist. Type /help for info. , retard");
+            default -> System.out.println("Ati introdus un numar invalid!");
         }
     }   while(valoare != 7);
 
 
     }
 }
-
-
-
-/*
-exemplu linie de comanda in fisier csv:
-
-
-adauga,userid,nume,varsta;
-afiseaza, useri/produse/licitatii active;
-bid, product id/name , userid, oferta monetara,
-
-
- */
-
