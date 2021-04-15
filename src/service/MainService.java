@@ -36,7 +36,7 @@ public class MainService  {
 
     public void addUser(){
         System.out.print("Numele: ");
-        String nume = a.nextLine();
+        String nume = a.next();
 
         System.out.print("Varsta: ");
         int age = a.nextInt();

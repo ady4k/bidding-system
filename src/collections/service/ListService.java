@@ -1,5 +1,5 @@
 package collections.service;
-
+//daca citesti asta adi visla e gay
 import model.*;
 
 import java.util.ArrayList;

@@ -1,5 +1,5 @@
 package model;
-
+//daca citesti asta adi visla e gay
 public abstract class Product {
     private static int productId = 0;
     private final int currId;

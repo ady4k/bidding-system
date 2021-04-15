@@ -1,6 +1,6 @@
 package model;
 
-import org.jetbrains.annotations.NotNull;
+//daca citesti asta adi visla e gay
 
 public class Bid {
     private static int bidId = 0;

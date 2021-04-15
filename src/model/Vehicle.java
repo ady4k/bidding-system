@@ -16,7 +16,7 @@ public class Vehicle extends Location{
         this.engineCapacity = engineCapacity;
         this.hasForcedInduction = hasForcedInduction;
     }
-
+    //daca citesti asta adi visla e gay
     // getteri
     public int getkW() {
         return kW;
